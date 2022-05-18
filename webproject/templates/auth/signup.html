@@ -1,0 +1,23 @@
+<div>
+    <form method="post" >
+        {{ form.csrf_token }}
+        {% include "form_errors.html" %}
+        <div>
+            <label for="username">사용자이름</label>
+            <input type="text"  name="username" id="username" vlaue="{{ form.username.data or ''}}">
+        </div>
+        <div >
+            <label for="password1">비밀번호</label>
+            <input type="password" name="password1" id="password1" value="{{ form.password1.data or '' }}">
+        </div>
+        <div>
+            <label for="password2">비밀번호확인</label>
+            <input type="password" name="password2" id="password2" value="{{ form.password2.data or ''}}">
+        </div>
+        <div >
+            <label for="email">이메일</label>
+            <input type="text" class="form-control" name="email" id="email" value="{{ form.email.data or ''}}">
+        </div>
+        <button type="submit" >생성하기</button>
+    </form>
+</div>
