@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<h1>{{ post.subject }}</h1>
+<div>
+    {{post.content}}
+</div>
+<div>
+    <ul>
+        <li>{{book.name}}</li>
+        <li>{{book.author}}</li>
+        <li>{{book.department}}</li>
+    </ul>
+</div>
+
+<h5>{{post.reply_set|length}}개의 댓글</h5>
+<div>
+    <ul>
+        {% for reply in post.reply_set %}
+        <li>{{reply.content}}</li>
+        {%endfor%}
+    </ul>
+</div>
+
+<form action="{{url_for('reply.create',post_id=post.id)}}" method="post">
+    <textarea name="content" id="content" rows="15"></textarea>
+    <input type="submit" value="답변등록">
+</form>
+
+{%endblock%}
