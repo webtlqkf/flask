@@ -1,15 +1,31 @@
-<div>
-    <form method="post" >
-        {{ form.csrf_token }}
-        {% include "form_errors.html" %}
-        <div>
-            <label for="username">사용자이름</label>
-            <input type="text" name="username" id="username" value="{{ form.username.data or ''}}">
-        </div>
-        <div >
-            <label for="password">비밀번호</label>
-            <input type="password" name="password" id="password" value="{{ form.password.data or ''}}">
-        </div>
-        <button type="submit">로그인</button>
-    </form>
-</div>
+
+<head>
+    <link href="{{ url_for('static',filename='login.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <style>
+        .v15_155 span {color : white; text-align: center; }
+        .v15_155:hover {color : grey;}
+    </style>
+</head>
+<body>
+    <div id="title">
+              <a href="{{url_for('main.index')}}" class="logo"><img src="{{url_for('static',filename='logo.jpg')}}" alt="re 북"></a>
+    </div>
+    <div>
+        <form method="post" >
+            {{ form.csrf_token }}
+            {% include "form_errors.html" %}
+            <div class="v15_148">
+                <label for="username">사용자이름</label>
+                <input class='v15_149' type="text" name="username" id="username" value="{{ form.username.data or ''}}">
+            </div>
+            <div class="v15_151">
+                <label for="password">비밀번호</label>
+                <input class='v15_152' type="password" name="password" id="password" value="{{ form.password.data or ''}}">
+            </div>
+            <div class="v15_154">
+                <button class='v15_155'type="submit"><span>로그인</span></button>
+            </div>
+        </form>
+    </div>
+</body>

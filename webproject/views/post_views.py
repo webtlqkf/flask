@@ -17,3 +17,7 @@ def detail(post_id):
     post = Post.query.get_or_404(post_id)
     book = BookInfo.query.get(post.book_info_id)
     return render_template('post/post_detail.html', post=post, book=book)
+
+
+
+

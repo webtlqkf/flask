@@ -3,7 +3,7 @@
 {% if post_list %}
 <div>
 <table class="table">
-    {% for post in post_list.items %} <!--items[0]: book/ items[1]: post -->
+    {% for post in post_list.items %}
 
         <tr>
             <td>책이름 : &nbsp{{post.book.name}}</td>

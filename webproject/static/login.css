@@ -1,0 +1,270 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    font-size: 14px;
+  }
+  .v11_133 {
+    width: 100%;
+    height: 768px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .name {
+    color: #fff;
+  }
+  .v15_148 {
+    width: 330px;
+    height: 51px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 258px;
+    left: 40%;
+    overflow: hidden;
+  }
+  .v15_149 {
+    width: 330px;
+    height: 51px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 2px solid rgba(0,0,0,1);
+    overflow: hidden;
+  }
+  .v15_150 {
+    width: 95px;
+    color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 17px;
+    left: 17px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 15px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v15_151 {
+    width: 330px;
+    height: 51px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 341px;
+    left: 40%;
+    overflow: hidden;
+  }
+  .v15_152 {
+    width: 330px;
+    height: 51px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 2px solid rgba(0,0,0,1);
+    overflow: hidden;
+  }
+  .v15_153 {
+    width: 113px;
+    color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 17px;
+    left: 17px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 15px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v15_154 {
+    width: 330px;
+    height: 51px;
+    background: url("../images/v15_154.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 424px;
+    left: 40%;
+    overflow: hidden;
+  }
+  .v15_155 {
+    width: 330px;
+    height: 51px;
+    background: rgba(0,0,0,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 2px solid rgba(0,0,0,1);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    overflow: hidden;
+  }
+  .v15_156 {
+    width: 35px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 19px;
+    left: 146px;
+    font-family: Roboto;
+    font-weight: Black;
+    font-size: 13px;
+    opacity: 1;
+    text-align: center;
+  }
+  .name {
+    color: #fff;
+  }
+  .name {
+    color: #fff;
+  }
+  .v22_134 {
+    width: 199px;
+    height: 25px;
+    background: url("../images/v22_134.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 159px;
+    left: 60%;
+    overflow: hidden;
+  }
+  .v22_135 {
+    width: 199px;
+    height: 25px;
+    background: rgba(0,0,0,0.7699999809265137);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 2px solid rgba(0,0,0,0.7699999809265137);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    overflow: hidden;
+  }
+  div.v22_134 > div.v22_135 > a {
+    width: 199px;
+    height: 25px;
+  }
+  .v22_136 {
+    width: 146px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 2px;
+    left: 26px;
+    font-family: Roboto;
+    font-weight: Black;
+    font-size: 13px;
+    opacity: 1;
+    text-align: center;
+  }
+
+  header {
+    position: fixed; z-index: 100; left: 0; top: 0; width: 100%; border-bottom: 1px solid #d6d6d6; background-color: #fff;
+  }
+  #title {
+    position: relative; margin: 10px auto; width: 100%; max-width: 800px; height: 40px;
+  }
+  #title > a.logo {
+    display: block; margin: 0 auto; width: 70px; height: 40px;
+  }
+  #title > a.logo > img {
+    width: 70px; height: 40px;
+  }
+  
+  #bar {
+    position: fixed; z-index: 100; left: 0; bottom: 0; width: 100%; height: 60px; box-sizing: border-box; border-top: 1px solid #d6d6d6; background-color: #f2f2f2;
+  }
+  #bar > nav {
+    margin: 0 auto; width: 100%; max-width: 800px; height: 100%;
+  }
+  #bar > nav > a {
+    display: block; float: left; width: 25%; height: 100%;
+  }
+  #bar > nav.trisection > a {
+    width: 33%;
+  }
+  #bar > nav > a:hover {
+    background-color: #e3e3e3;
+  }
+  #bar > nav > a > span.icons {
+    display: block; margin: 14px auto 5px;
+  }
+  #bar > nav > a > span.text {
+    display: block; line-height: 15px; color: #292929; font-size: 12px; font-weight: bold; text-align: center;
+  }
+  .icons {
+    display: inline-block; background: transparent url('icons.png') no-repeat; background-size: 254px 70px;
+  }
+  .icons.book-gray-14 {
+    width: 14px; height: 14px; background-position: -2px -2px;
+  }
+  .icons.user-gray-14 {
+    width: 14px; height: 14px; background-position: -18px -2px;
+  }
+  .icons.location-gray-14 {
+    width: 14px; height: 14px; background-position: -34px -2px;
+  }
+  .icons.arrowdown-gray-14 {
+    width: 14px; height: 14px; background-position: -50px -2px;
+  }
+  .icons.home-darkgray-16 {
+    width: 16px; height: 16px; background-position: -2px -18px; 
+  }
+  .icons.sell-darkgray-16 {
+    width: 16px; height: 16px; background-position: -20px -18px;
+  }
+  .icons.my-darkgray-16 {
+    width: 16px; height: 16px; background-position: -38px -18px;
+  }
+  .icons.login-darkgray-16 {
+    width: 16px; height: 16px; background-position: -56px -18px;
+  }
+  .icons.logout-darkgray-16 {
+    width: 16px; height: 16px; background-position: -74px -18px;
+  }
+  .icons.search-darkgray-16 {
+    width: 16px; height: 16px; background-position: -92px -18px;
+  }
+  .icons.search-gray-16 {
+    width: 16px; height: 16px; background-position: -110px -18px;
+  }
+  .icons.unchecked-silver-16 {
+    width: 16px; height: 16px; background-position: -128px -18px;
+  }
+  .icons.checked-gray-16 {
+    width: 16px; height: 16px; background-position: -146px -18px;
+  }
+  .icons.send-darkgray-16 {
+    width: 16px; height: 16px; background-position: -164px -18px;
+  }
+  .icons.soldout-white-16 {
+    width: 16px; height: 16px; background-position: -182px -18px;
+  }
+  .icons.message-white-16 {
+    width: 16px; height: 16px; background-position: -200px -18px;
+  }
+  .icons.edit-gray-16 {
+    width: 16px; height: 16px; background-position: -218px -18px;
+  }
+  .icons.price-gray-16 {
+    width: 16px; height: 16px; background-position: -236px -18px;
+  }
+  .icons.image-gray-32 {
+    width: 32px; height: 26px; background-position: -2px -36px;
+  }
