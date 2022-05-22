@@ -1,5 +1,10 @@
+
 from flask import Blueprint, url_for, render_template
-from werkzeug.utils import redirect
+from werkzeug.utils import redirect, secure_filename
+
+import os
+from flask import Flask, request, redirect, url_for
+
 bp = Blueprint('main', __name__, url_prefix='/')
 
 
@@ -14,7 +19,6 @@ def test():
 @bp.route('/post')
 def post():
     return redirect(url_for('post._list'))
-
 
 
 

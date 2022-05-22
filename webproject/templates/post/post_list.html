@@ -6,6 +6,9 @@
     {% for post in post_list.items %}
 
         <tr>
+            <td><img src="{{post.img_path}}" width="200px" height="200px"></td>
+            <td>작성자 : &nbsp{{post.user.username}}</td>
+            <td>img_path : &nbsp{{post.img_path}}</td>
             <td>책이름 : &nbsp{{post.book.name}}</td>
             <td>저자: &nbsp{{post.book.author}}</td>
             <td>전공: &nbsp{{post.book.department}}</td>

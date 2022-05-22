@@ -4,10 +4,13 @@ from werkzeug.utils import redirect
 
 from webproject import db
 from webproject.models import *
+from webproject.views.auth_views import login_required
+
 
 bp = Blueprint('reply', __name__, url_prefix='/reply')
 
 @bp.route('/create/<int:post_id>', methods = ('POST',))
+@login_required
 def create(post_id):
     post = Post.query.get_or_404(post_id)
     content = request.form['content']

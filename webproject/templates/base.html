@@ -45,11 +45,16 @@
         </ul>
     </div>
 </nav>
+
 {% block content %}
 {% endblock %}
 <!--jquery js-->
 <script src="{{ url_for('static',filename='jquery-3.6.0.min.js') }}"></script>
 <!--bootstrap js-->
 <script src="{{ url_for('static',filename='bootstrap.min.js') }}"></script>
+<img src="/static/logo.jpg" width="100px">
+<img src="{{url_for('static',filename='logo.jpg')}}" alt="re 북" width="100px">
+<img src="/static/logo/1.jpg", width="100px">
+
 </body>
 </html>

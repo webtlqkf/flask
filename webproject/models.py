@@ -23,7 +23,7 @@ class Post(db.Model): #판매페이지
 
     subject = db.Column(db.String(200), nullable=False)
     content = db.Column(db.Text(),nullable=False)
-    isparcel = db.Column(db.Boolean(), nullable=True,sever_default='True')  # True: 택배, False: 직거래
+    isparcel = db.Column(db.Boolean(), nullable=True,sevrer_default='True')  # True: 택배, False: 직거래
     create_date = db.Column(db.DateTime(), nullable=False)
     img_path = db.Column(db.String(), nullable=True, server_default='1')  # 요거는 나중에 추가해보자
 
