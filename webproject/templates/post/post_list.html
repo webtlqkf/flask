@@ -1,32 +1,56 @@
 {% extends 'base.html' %}
 {% block content%}
 {% if post_list %}
-<div>
-<table class="table">
+<h>{{post_list}}</h>
+<div class="mt-3" style="text-decoration:none;">
     {% for post in post_list.items %}
+    <div class="d-flex justify-content-center">
+        <div class="card mb-3 mt-3" style="width: 800px;">
+            <a href="{{ url_for('post.detail', post_id=post.id)}}" class="text-decoration-none text-black">
+                <div class="row g-0">
+                    <div class="col-md-4 ">
+                            <div class="card-body" style="margin:auto; float: left;">
+                                <img src="{{post.img_path}}"  width="200px" height="200px">
+                            </div>
+                    </div>
+                    <div class="col-md-8  position-relative">
+                            <div class="card-body">
+                                <h4  class="card-title fw-bold">책제목: {{post.book.name}}</h4>
+                                <div class="row justify-content-start">
+                                    <div class="col-6">
+                                        <div class="mt-0 mb-3">
+                                            <p class="text-muted mt-0 mb-0">판매글 제목:{{post.subject}}</p>
+                                            <p class="text-muted mt-0 mb-0">저자:{{post.book.author}}</p>
+                                            <p class="text-muted mt-0 mb-0">전공:{{post.book.department}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <p class="text-muted mt-0 mb-0"><small>판매자 : &nbsp{{post.user.username}}</small></p>
+                                    </div>
+                                </div>
 
-        <tr>
-            <td><img src="{{post.img_path}}" width="200px" height="200px"></td>
-            <td>작성자 : &nbsp{{post.user.username}}</td>
-            <td>img_path : &nbsp{{post.img_path}}</td>
-            <td>책이름 : &nbsp{{post.book.name}}</td>
-            <td>저자: &nbsp{{post.book.author}}</td>
-            <td>전공: &nbsp{{post.book.department}}</td>
-            <td>가격: &nbsp{{post.book.price}}원</td>
-            {% if post.isparcel %}
-            <td>거래방식: 택배</td>
-            {% else %}
-            <td>거래방식 : 직거래</td>
-            {% endif %}
-            <td>
-                  <a href="{{ url_for('post.detail', post_id=post.id)}}">제목: &nbsp{{post.subject}}</a>
-            </td>
-            <td>게시글 id: &nbsp{{post.id}}</td>
-            <td>작성날짜: &nbsp{{post.create_date.year}}/{{post.create_date.month}}/{{post.create_date.day}}</td>
-        </tr>
+                                <h4 class="fw-bold">가격: &nbsp{{post.book.price}}원</h4>
+                                {% if post.isparcel %}
+                                <p class="text-muted mt-0 mb-0">택배</p>
+                                {%else%}
+                                <p class="text-muted mt-0 mb-0">직거래</p>
+                                {% endif %}
+                                <div class="position-absolute bottom-0 end-0 mb-3 me-3" >
+                                    <p class="card-text"><small class="text-muted">{{post.create_date.year}}/{{post.create_date.month}}/{{post.create_date.day}}</small></p>
+                                </div>
+
+                            </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
     {% endfor %}
-</table>
+
 </div>
+
+
+
      <!--페이징 처리 시작-->
     <ul class="pagination justify-content-center">
         <!--이전 페이지-->

@@ -56,7 +56,7 @@ def create():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         book = BookInfo(name=form.bookname.data, author=form.author.data, school=form.school.data,
                         department=form.department.data, price=form.price.data)
-        post =Post(subject=form.subject.data, content=form.content.data, isparcel=form.isparcel.data,img_path=file_path, create_date=datetime.now(),book=book )
+        post =Post(subject=form.subject.data, content=form.content.data, isparcel=form.isparcel.data,img_path=file_path, create_date=datetime.now(),book=book,user=g.user )
         db.session.add(post)
         db.session.add(book)
         db.session.commit()

@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content%}
 
 <head>
     <link href="{{ url_for('static',filename='login.css') }}" rel="stylesheet">
@@ -8,9 +10,6 @@
     </style>
 </head>
 <body>
-    <div id="title">
-              <a href="{{url_for('main.index')}}" class="logo"><img src="{{url_for('static',filename='logo.jpg')}}" alt="re 북"></a>
-    </div>
     <div>
         <form method="post" >
             {{ form.csrf_token }}
@@ -29,3 +28,4 @@
         </form>
     </div>
 </body>
+{%endblock%}

@@ -9,6 +9,7 @@
     <style>
         .form-group{margin-bottom:0.5rem;}
         .form-group label{margin-bottom:0.5rem;}
+
     </style>
 </head>
 <body>
@@ -40,21 +41,23 @@
                 <a class="nav-link" href="/post">글목록</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">마이페이지</a>
+                <a class="nav-link" href="/mypage/list">마이페이지</a>
             </li>
         </ul>
     </div>
+    <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
 </nav>
 
 {% block content %}
+<!--여기에 다른 html 들어감-->
 {% endblock %}
 <!--jquery js-->
 <script src="{{ url_for('static',filename='jquery-3.6.0.min.js') }}"></script>
 <!--bootstrap js-->
 <script src="{{ url_for('static',filename='bootstrap.min.js') }}"></script>
-<img src="/static/logo.jpg" width="100px">
-<img src="{{url_for('static',filename='logo.jpg')}}" alt="re 북" width="100px">
-<img src="/static/logo/1.jpg", width="100px">
 
 </body>
 </html>

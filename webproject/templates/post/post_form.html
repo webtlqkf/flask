@@ -13,34 +13,38 @@
 
         <div class="form-group">
             <label for="subject">제목</label>
-            <input type="text" class="form-control" name="subject" id="subject" value="{{ form.subject.data or '' }}">
+            <input type="text" class="form-control" name="subject" id="subject" value="{{ form.subject.data or '' }}" required>
         </div>
         <div class="form-group">
             <label for="content">내용</label>
-            <textarea class="form-control" name="content" id="content" rows="10">{{form.content.data or ''}}</textarea>
+            <textarea class="form-control" name="content" id="content" rows="10" required>{{form.content.data or ''}}</textarea>
         </div>
         <div>
             <lable for="isparcel">거래방식</lable>
             {{form.isparcel}}
-            {{form.isparcel.data}}
         </div>
         <div>
-            {{form.bookname}}
-            {{form.bookname.data}}
-
-            {{form.author}}
-            {{form.author.data}}
-
-            {{form.school}}
-            {{form.school.data}}
-
-            {{form.department}}
-            {{form.department.data}}
-
-            {{form.price}}
-            {{form.price.data}}
-
-            <input type="file" class="form-control" name="file" id="file" value="{{ form.img.data or '' }}">
+            <div>
+                <lable for="bookname">책이름</lable>
+                {{form.bookname}}
+            </div>
+            <div>
+                <lable for="author">책제목</lable>
+                {{form.author}}
+            </div>
+            <div>
+                <lable for="school">학교</lable>
+                {{form.school}}
+            </div>
+            <div>
+                <lable for="department">전공</lable>
+                {{form.department}}
+            </div>
+            <div>
+                <lable for="price">가격</lable>
+                {{form.price}}
+            </div>
+            <input type="file" class="form-control" name="file" id="file" value="{{ form.img.data or '' }}" required>
 
         </div>
         <button type="submit" class="btn btn-primary">저장하기</button>

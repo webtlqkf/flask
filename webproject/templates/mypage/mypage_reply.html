@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="d-flex justify-content-center" >
+    <div class="card mt-3" style="width:50em; " >
+    <h3>{{reply.content}}</h3>
+    {%for re_reply in reply.re_reply_set %}
+        <div class="card-body">
+            {%if re_reply.reply.post.user.username == re_reply.user.username %}
+            <div class="card bg-success" style="--bs-bg-opacity: .1">
+            <p>판매자:{{re_reply.user.username}}{{re_reply.content}}</p>
+            </div>
+            {% else %}
+            <div class="card bg-info" style="--bs-bg-opacity: .1">
+            <p>판매자:{{re_reply.user.username}}{{re_reply.content}}</p>
+            </div>
+            {%endif%}
+        </div>
+    {%endfor%}
+    </div>
+
+</div>
+<div class="d-flex justify-content-center" >
+
+  <div class="card mt-3 " style="width:50em; " >
+    <form action="{{url_for('mypage.create',reply_id=reply.id)}}" method="post">
+            <textarea name="content" id="content" rows="5" cols="50em" required></textarea>
+            <button class="btn btn-primary" type="submit">등록</button>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,35 +1,62 @@
 {% extends 'base.html' %}
 {% block content%}
+<div class="d-flex justify-content-center">
+    <div class="card mb-3 mt-3" style="width: 1000px;">
+        <div class="row g-0">
+        <div class="col-md-7">
+            <div class="card-body">
+                <div class="card mb-3 mt-3 "  style="width: 520px; height: 520px;">
+                    <img src="{{post.img_path}}" width="500px" height="500px" class="rounded mt-2 ms-2">
+                </div>
+            </div>
+        </div>
+            <div class="col md-3 position-relative">
+                <div class="mt-5">
+                    <h2 class="text-muted mb-4"><b>{{ post.subject }}</b></h2>
+                    <div class="mb-5">
+                    <h1 class="mb-2"><b>{{book.name}}</b></h1>
+                    <p class="text-muted mb-0"><b>저자 : {{book.author}}</b></p>
+                    <p class="text-muted mb-0"><b>전공 : {{book.department}}</b></p>
+                    </div>
+                    <span>
+                        <h1><b>{{book.price}}원</b></h1>
+                        {% if post.isparcel %}
+                        <p class="text-muted mt-0 mb-0">택배</p>
+                        {%else%}
+                        <p class="text-muted mt-0 mb-0">직거래</p>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+        </div>
+</div> <!--사진, 등 기본적인 정보 보여줌-->
 
-<h1>{{ post.subject }}</h1>
-<img src="{{post.img_path}}">
-<div>
-    {{post.content}}
+<div class="d-flex justify-content-center">
+    <div class="card mb-3 mt-3" style="width: 1000px;">
+        <div class="card-body mt-5 ms-5 me-5 mb-5" style="height: 500px;">
+            <h5 class="text-muted mb-4" >상세 설명</h5>
+            <h3>{{post.content}}</h3>
+        </div>
+    </div>
 </div>
-<div>
+
+<div class="d-flex justify-content-center">
+    <div class="card mb-3 mt-3" style="width: 1000px;">
+        <h5>{{post.reply_set|length}}개의 댓글</h5>
+    <div>
     <ul>
-        <li>책이름 : &nbsp {{book.name}}</li>
-        <li>저자 : &nbsp {{book.author}}</li>
-        <li>전공 : &nbsp {{book.department}}</li>
-        <li>가격 : &nbsp {{book.price}}</li>
-        <li>택배여부 : &nbsp{{post.isparcel}}</li>
+    {% for reply in post.reply_set %}
+    <li>{{reply.content}}
+    <span>작성자 : &nbsp {{reply.user.username}}</span>
+    </li>
+    {%endfor%}
     </ul>
+    </div>
+        <form action="{{url_for('reply.create',post_id=post.id)}}" method="post">
+            <textarea name="content" id="content" rows="15" required></textarea>
+            <input type="submit" value="답변등록">
+        </form>
+    </div>
 </div>
-
-<h5>{{post.reply_set|length}}개의 댓글</h5>
-<div>
-    <ul>
-        {% for reply in post.reply_set %}
-        <li>{{reply.content}}
-            <span>작성자 : &nbsp {{reply.user.username}}</span>
-        </li>
-        {%endfor%}
-    </ul>
-</div>
-
-<form action="{{url_for('reply.create',post_id=post.id)}}" method="post">
-    <textarea name="content" id="content" rows="15"></textarea>
-    <input type="submit" value="답변등록">
-</form>
-
 {%endblock%}
