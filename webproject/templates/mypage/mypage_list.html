@@ -1,36 +1,93 @@
 {% extends 'base.html' %}
 {% block content%}
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center mt-5">
     <div class="card">
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
-    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
-    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">작성글목록</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">My bids</button>
+    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">내 정보</button>
   </div>
 </nav>
+
 <div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-    <div class="card mt-3" style="width:50em; height:30em;" >
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0" style="overflow-y:scroll;">
+    <div class="card-body" style="width:50em; height:30em;" >
         <h3 class="mt-3 ms-3"><b>작성글목록</b></h3>
     {%if post_list[0]%}
     {%for i in range(5)%}
     {%if post_list[i]%}
         <div class="card-body">
             <a href="{{ url_for('post.detail', post_id=post_list[i].id)}}" class="text-decoration-none text-black">
-                <p>{{post_list[i].subject}}</p>
-                <p>{{post_list[i].create_date.year}}/{{post_list[i].create_date.month}}/{{post_list[i].create_date.day}}</p>
-            </a>
-            {%for reply in post_list[i].reply_set%}
-            <a href="{{url_for('mypage.reply', reply_id=reply.id)}}">
-                <p>{{reply.content}}id:{{reply.id}}</p>
+                <div class="card" style="height:45px;">
+                <div class="row-g-0">
+                <div class="ms-3 col-md-3 mt-2" style="float:left;">{{post_list[i].book.name}}</div>
+                <div class="ms-3 mt-2" style="float:left;">{{post_list[i].subject}}</div>
+                <div class="col-md-2 mt-2 " style="float:right;"><small class="text-muted">{{post_list[i].create_date.year}}/{{post_list[i].create_date.month}}/{{post_list[i].create_date.day}}</small></div>
 
+                </div>
+                </div>
             </a>
+            <div class="card">
+            {%for reply in post_list[i].reply_set%}
+            <div class="card-body bg-secondary" style="--bs-bg-opacity: .2">
+                <a href="{{url_for('mypage.reply', reply_id=reply.id)}}" class="text-decoration-none">
+                    <div class="text-black ">{{reply.user.username}}의 관심</div>
+                </a>
+            </div>
             {%endfor%}
+            </div>
+            <div class="card">
+                <div class="card-body">
+                <button class="btn bg-danger text-light" style="--bs-bg-opacity: .9; float:right;"><b>삭제</b></button>
+                <button class="btn bg-warning text-light" style="--bs-bg-opacity: .9;"><b>수정</b></button>
+                </div>
+            </div>
+
         </div>
     {%endif%}
     {%endfor%}
-    <button class="btn btn-primary">더보기</button>
+                <a href="{{url_for('mypage.post_all')}}">
+                <button class="btn btn-primary" >전체보기</button>
+                </a>
+    {%else%}
+        <p>작성 글이 없습니다</p>
+    {%endif%}
+    </div>
+  </div>
+
+
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0" style="overflow-y:scroll;">
+          <div class="card-body" style="width:50em; height:30em;">
+        <h3 class="mt-3 ms-3"><b>My bids</b></h3>
+    {%if reply_list[0]%}
+    {%for i in range(5)%}
+    {%if reply_list[i]%}
+        <div class="card-body">
+            <a href="{{url_for('mypage.reply', reply_id=reply_list[i].id)}}" class="text-decoration-none">
+                <div class="card" style="height:70px;">
+                    <div class="card-body">
+                        <div>{{reply_list[i].content}}</div>
+                        <div class="text-muted" style="float:right;">{{reply_list[i].create_date.year}}/{{reply_list[i].create_date.month}}/{{reply_list[i].create_date.day}}</div>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ url_for('post.detail', post_id=reply_list[i].post.id)}}" class="text-black">
+                <div class="card" style="height:30px;">
+                <div class="row-g-0">
+                <div class="ms-3 col-md-3 mt-1" style="float:left;">{{reply_list[i].post.book.name}}</div>
+                <div class="ms-3 mt-1" style="float:left;">{{reply_list[i].post.subject}}</div>
+                <div class="col-md-2 mt-1 " style="float:right;"><small class="text-muted">{{reply_list[i].post.create_date.year}}/{{reply_list[i].post.create_date.month}}/{{reply_list[i].post.create_date.day}}</small></div>
+                </div>
+                </div>
+            </a>
+
+        </div>
+    {%endif%}
+    {%endfor%}
+              <a href="{{url_for('mypage.reply_all')}}">
+                <button class="btn btn-primary">전체보기</button>
+              </a>
     {%else%}
         <p>no content</p>
     {%endif%}
@@ -38,24 +95,18 @@
   </div>
 
 
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-        <div class="card mt-3" style="width:50em; height:30em;" >
-        <h3 class="mt-3 ms-3"><b>reply</b></h3>
-    {%for reply in reply_list%}
-    <div class="card-body">
-        <a href="{{url_for('mypage.reply', reply_id=reply.id)}}" class="text-decoration-none text-black">
-            <p>{{reply.content}}</p>
-            <p>{{reply.create_date}}</p>
-        </a>
-    </div>
-    {%endfor%}
-</div>
-  </div>
-
-
 
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-
+        <div class="card-body" style="width:50em; height:30em;"  >
+            <h1><b>{{g.user.username}}</b></h1>
+            <h4>{{g.user.email}}</h4>
+            <br>
+            <h4>게시글 : {{g.user.post_set|length}}</h4>
+            <h4>쪽지 : {{g.user.reply_set|length}}</h4>
+        <div>
+        <div class="card-body">
+            <a class="btn btn-primary" href="/post/create">책 등록하기</a>
+        </div>
   </div>
 </div>
 </div>

@@ -43,20 +43,19 @@
 
 <div class="d-flex justify-content-center">
     <div class="card mb-3 mt-3" style="width: 1000px;">
-        <h5>{{post.reply_set|length}}개의 댓글</h5>
-    <div>
-    <ul>
-    {% for reply in post.reply_set %}
-    <li>{{reply.content}}
-    <span>작성자 : &nbsp {{reply.user.username}}</span>
-    </li>
-    {%endfor%}
-    </ul>
+        <div class="card-body">
+
+                   <form action="{{url_for('reply.create',post_id=post.id)}}" method="post">
+                       <div class="row g-0">
+                       <div class="col-md-9" ><textarea {% if g.user.id == post.user.id %}disabled{%endif%} name="content" id="content" rows="3" cols="90em" required></textarea></div>
+
+                           <div class="col-md-3 d-flex justify-content-center" style="height:auto;"><input class="btn btn-primary " type="submit" value="판매자에게 연락하기"></div>
+                       </div>
+                    </form>
+
+        </div>
     </div>
-        <form action="{{url_for('reply.create',post_id=post.id)}}" method="post">
-            <textarea name="content" id="content" rows="15" required></textarea>
-            <input type="submit" value="답변등록">
-        </form>
+
     </div>
 </div>
 {%endblock%}

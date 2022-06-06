@@ -1,53 +1,62 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
-    <form method="post" class="post-form my-3" enctype=multipart/form-data>
-        {{ form.csrf_token }}
-        <!--오류표시-->
-        {% for field, errors in form.errors.items() %}
-        <div class="alert alert-danger" role="alert">
-            <strong>{{ form[field].label }}</strong>: {{', '.join(errors) }} <!--form.validate_on_submit이 실패하면 오류 표시-->
-        </div>
-        {% endfor %}
+    <div class="d-flex justify-content-center">
 
-        <div class="form-group">
-            <label for="subject">제목</label>
-            <input type="text" class="form-control" name="subject" id="subject" value="{{ form.subject.data or '' }}" required>
-        </div>
-        <div class="form-group">
-            <label for="content">내용</label>
-            <textarea class="form-control" name="content" id="content" rows="10" required>{{form.content.data or ''}}</textarea>
-        </div>
-        <div>
-            <lable for="isparcel">거래방식</lable>
-            {{form.isparcel}}
-        </div>
-        <div>
-            <div>
-                <lable for="bookname">책이름</lable>
-                {{form.bookname}}
-            </div>
-            <div>
-                <lable for="author">책제목</lable>
-                {{form.author}}
-            </div>
-            <div>
-                <lable for="school">학교</lable>
-                {{form.school}}
-            </div>
-            <div>
-                <lable for="department">전공</lable>
-                {{form.department}}
-            </div>
-            <div>
-                <lable for="price">가격</lable>
-                {{form.price}}
-            </div>
-            <input type="file" class="form-control" name="file" id="file" value="{{ form.img.data or '' }}" required>
+    <div class="card" style="width:50em;">
+        <h2 class="my-3 bord    er-bottom pb-2"><b>책 등록</b></h2>
 
+        <div class="card-body">
+        <form method="post" class="post-form my-3" enctype=multipart/form-data>
+            {{ form.csrf_token }}
+            <!--오류표시-->
+            {% for field, errors in form.errors.items() %}
+            <div class="alert alert-danger" role="alert">
+                <strong>{{ form[field].label }}</strong>: {{', '.join(errors) }} <!--form.validate_on_submit이 실패하면 오류 표시-->
+            </div>
+            {% endfor %}
+
+            <div class="form-group">
+                <label for="subject">제목</label>
+                <input type="text" class="form-control" name="subject" id="subject" value="{{ form.subject.data or '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="content">내용</label>
+                <textarea class="form-control" name="content" id="content" rows="10" required>{{form.content.data or ''}}</textarea>
+            </div>
+            <div class="card-body">
+                <lable for="isparcel">거래방식</lable>
+                {{form.isparcel}}
+            </div>
+            <div>
+                <div class="card-body">
+                    <lable for="bookname">책이름</lable>
+                    {{form.bookname}}
+                </div>
+                <div class="card-body">
+                    <lable for="author">책제목</lable>
+                    {{form.author}}
+                </div>
+                <div class="card-body">
+                    <lable for="school">학교 &nbsp </lable>
+                    {{form.school}}
+                </div>
+                <div class="card-body">
+                    <lable for="department">전공 &nbsp </lable>
+                    {{form.department}}
+                </div>
+                <div class="card-body">
+                    <lable for="price">가격 &nbsp </lable>
+                    {{form.price}}
+                </div>
+                <div class="card-body">
+                <input type="file" class="form-control" name="file" id="file" value="{{ form.img.data or '' }}" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">책 등록하기</button>
+        </form>
         </div>
-        <button type="submit" class="btn btn-primary">저장하기</button>
-    </form>
+        </div>
+    </div>
 </div>
 {% endblock %}]

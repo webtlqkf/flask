@@ -12,8 +12,8 @@ bp = Blueprint('mypage', __name__, url_prefix='/mypage')
 @login_required
 def _list():
     user_id=session.get('user_id')
-    post_list = Post.query.filter(Post.user_id==user_id)
-    reply_list = Reply.query.filter(Reply.user_id==user_id)
+    post_list = Post.query.filter(Post.user_id==user_id).order_by(Post.create_date.desc())
+    reply_list = Reply.query.filter(Reply.user_id==user_id).order_by(Reply.create_date.desc())
     return render_template('mypage/mypage_list.html', post_list=post_list, reply_list=reply_list)
 
 @bp.route('/reply/<int:reply_id>')
@@ -29,3 +29,19 @@ def create(reply_id):
     reply.re_reply_set.append(re_reply)
     db.session.commit()
     return redirect(url_for('mypage.reply',reply_id=reply.id))
+
+@bp.route('/post/all')
+def post_all():
+    user_id=session.get('user_id')
+    page = request.args.get('page', type=int, default=1)
+    post_list = Post.query.filter(Post.user_id == user_id).order_by(Post.create_date.desc())
+    post_list = post_list.paginate(page, per_page=10)
+    return render_template('mypage/mypage_post_all.html',post_list=post_list)
+
+@bp.route('/reply/all')
+def reply_all():
+    user_id=session.get('user_id')
+    page = request.args.get('page', type=int, default=1)
+    reply_list = Reply.query.filter(Reply.user_id == user_id).order_by(Reply.create_date.desc())
+    reply_list = reply_list.paginate(page, per_page=10)
+    return render_template('mypage/mypage_reply_all.html',reply_list=reply_list)

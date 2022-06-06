@@ -45,10 +45,10 @@
             </li>
         </ul>
     </div>
-    <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+    <form class="d-flex" role="search" method="get" action="{{url_for('post.search')}}">
+        <input class="form-control me-2" type="search" placeholder="책제목으로 검색" aria-label="Search" name="bookname">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
 </nav>
 
 {% block content %}
