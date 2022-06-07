@@ -28,8 +28,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                <button class="btn bg-danger text-light" style="--bs-bg-opacity: .9; float:right;"><b>삭제</b></button>
-                <button class="btn bg-warning text-light" style="--bs-bg-opacity: .9;"><b>수정</b></button>
+                <a href="#" class="delete btn btn-sm btn-outline-secondary" data-uri="{{url_for('post.delete', post_id=post_list.id)}}">삭제</a>
                 </div>
             </div>
 
@@ -83,4 +82,16 @@
         {% endif %}
     </ul>
     <!--페이징처리끝-->
+{% block script %}
+<script type='text/javascript'>
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+</script>
+{% endblock %}
 {% endblock %}

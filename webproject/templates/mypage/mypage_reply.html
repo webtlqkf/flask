@@ -2,12 +2,26 @@
 {% block content%}
 <div class="d-flex justify-content-center" >
     <div class="card mt-3" style="width:50em; " >
-    <h3>{{reply.content}}</h3>
+        <div class="card-body">
+            <h1>{{reply.content}}</h1>
+            <div class="row g-0">
+                <div class="col-md-3">책제목:{{reply.post.book.name}}</div>
+                <div class="col-md-3">가격:{{reply.post.book.price}}원</div>
+                <div class="col-md-3">{%if reply.post.isparcel%}택배{%else%}직거래{%endif%}</div>
+            </div>
+        </div>
     {%for re_reply in reply.re_reply_set %}
         <div class="card-body">
             {%if re_reply.reply.post.user.username == re_reply.user.username %}
             <div class="card bg-success" style="--bs-bg-opacity: .1">
-            <p>판매자:{{re_reply.user.username}}{{re_reply.content}}</p>
+            <div class="card-body mt-0 mb-0">
+                <div class="card-content">
+                    <h4>{{re_reply.content}}</h4>
+                </div>
+                <div class="card-content" style="float:right;">
+                    판매자:{{re_reply.user.username}}
+                </div>
+            </div>
             </div>
             {% else %}
             <div class="card bg-info" style="--bs-bg-opacity: .1">
@@ -22,10 +36,20 @@
 <div class="d-flex justify-content-center" >
 
   <div class="card mt-3 " style="width:50em; " >
-    <form action="{{url_for('mypage.create',reply_id=reply.id)}}" method="post">
-            <textarea name="content" id="content" rows="5" cols="50em" required></textarea>
-            <button class="btn btn-primary" type="submit">등록</button>
-    </form>
+      <div class="card-body">
+        <form action="{{url_for('mypage.create',reply_id=reply.id)}}" method="post">
+             <div class="row g-0">
+              <div class="col-md-11" >
+                <textarea name="content" id="content" rows="2" cols="90em" required></textarea>
+              </div>
+                  <div class="col-md-1" >
+                        <button class="btn btn-primary mt-2 ms-2" type="submit">
+                            <img src="{{url_for('static',filename='Polygon 1.png')}}" style="width:20px;" >
+                        </button>
+                  </div>
+             </div>
+        </form>
+      </div>
     </div>
 </div>
 
