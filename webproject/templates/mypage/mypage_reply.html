@@ -24,9 +24,17 @@
             </div>
             </div>
             {% else %}
-            <div class="card bg-info" style="--bs-bg-opacity: .1">
-            <p>구매자:{{re_reply.user.username}}{{re_reply.content}}</p>
+            <div class="card bg-warning" style="--bs-bg-opacity: .1">
+            <div class="card-body mt-0 mb-0">
+                <div class="card-content">
+                    <h4>{{re_reply.content}}</h4>
+                </div>
+                <div class="card-content" style="float:right;">
+                    구매자:{{re_reply.user.username}}
+                </div>
             </div>
+            </div>
+
             {%endif%}
         </div>
     {%endfor%}
